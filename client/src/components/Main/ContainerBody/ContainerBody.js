@@ -13,7 +13,6 @@ class ContainerBody extends Component {
 
   submit = (values) => {
     return promises().then(async () => {
-      //console.log("VALUES ",values);
       try {
         resEmail = await yup.reach(schema, 'email').isValid(values.email);
       } catch (e) {
@@ -28,7 +27,6 @@ class ContainerBody extends Component {
         email: values.email,
         password: values.password,
       };
-      console.log("VALUES ",dataToSend);
       this.props.userLogin(dataToSend);
     });
   };

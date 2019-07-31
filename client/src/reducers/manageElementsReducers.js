@@ -2,23 +2,15 @@
 import ACTION from '../actions/actiontsTypes';
 
 const initialState = {
-
-  error: null
+  dashboardStatus:false
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-
-    case ACTION.CHANGE_IS_BANED_SUCCESS : {
+    case ACTION.DASHBOARD_CHANGED: {
       return {
         ...state,
-        error: null,
-      };
-    }
-    case ACTION.CHANGE_IS_BANED_ERROR: {
-      return {
-        ...state,
-        error: action.error,
+        dashboardStatus:!state.dashboardStatus
       };
     }
     default: {
@@ -26,5 +18,3 @@ export default function (state = initialState, action) {
     }
   }
 }
-
-

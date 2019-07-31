@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import style from './ContainerBody.module.scss';
 import Form from './Form/Form';
-import { SubmissionError } from 'redux-form';
+//import { SubmissionError } from 'redux-form';
 import { userSignUp } from '../../../actions/actionCreator';
 import connect from 'react-redux/es/connect/connect';
 
-const yup = require('yup');
-const schema = require('../../../models/userSchema');
 const promises = () => new Promise(resolve => resolve());
-let resEmail;
 
 class ContainerBody extends Component {
 
   submit = (values) => {
-    const errors = {};
+
     return promises().then(async () => {
       try {
         const dataToSend = {
@@ -30,7 +27,6 @@ class ContainerBody extends Component {
       } catch (e) {
       }
     });
-  return errors
   };
 
   render() {

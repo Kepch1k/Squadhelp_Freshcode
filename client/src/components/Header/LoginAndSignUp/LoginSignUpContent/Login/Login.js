@@ -1,29 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react';
 import style from './Login.module.scss';
 import connect from 'react-redux/es/connect/connect';
 import { Link } from 'react-router-dom';
-import { logout } from '../../../../../actions/actionCreator';
-class Login extends Component {
-  constructor(props){
-    super(props);
-  }
-onClicked=()=>{
+import { logout , dashboard} from '../../../../../actions/actionCreator';
+function Login(props){
+function onClicked(){
+  props.logout();
+}
 
-   // console.log("PS");
-  this.props.logout();
+function onClickedDashboard(){
+  props.dashboard();
+}
 
- // <i className="fa fa-envelope-o"/>
-};
-  render() {
-    console.log(this.props.state.userReducers,"//");
-    const content = (this.props.state.userReducers.user===null) ? <Link to="/login">Login</Link> :
-      <span className={style.toClick}>
-
+    const list = props.state.manageElementsReducers.dashboardStatus && <div className={style.dashboard} >
+      <ul className={style.dashboardList}>
+        <li>View Dashboard</li>
+        <li>My account</li>
+        <li>Messages</li>
+        <Link to="/admin_panel/"><li>Admin panel</li></Link>
+        <li>Affiliate Dashboard</li>
+        <li onClick={onClicked}>Logout</li>
+      </ul>
+    </div>;
+    const content = (props.state.userReducers.user===null || props.state.userReducers.user===undefined) ?
+      <Link to="/login">Login</Link> :
+      <span className={style.toClick} onClick={onClickedDashboard}>
           <div className={style.ava}/>
-
-
-        <span className={style.hi}>&nbsp; Hi,{this.props.state.userReducers.user.displayName} <i className="fa fa-angle-down"/></span>
-
+        <span className={style.hi}>&nbsp; Hi,{props.state.userReducers.user.displayName} <i className="fa fa-angle-down"/></span>
         </span>
     ;
     return (
@@ -31,21 +34,9 @@ onClicked=()=>{
       <div className={style.main}>
       {content}
       </div>
-        <div className={style.dashboard} >
-          <ul className={style.dashboardList}>
-            <li>View Dashboard</li>
-            <li>My account</li>
-            <li>Messages</li>
-            <li> <Link to="/admin_panel/">Admin panel</Link></li>
-            {/*<li onClick={this.onClicked}>Admin panel</li>*/}
-            <li>Affiliate Dashboard</li>
-            <li onClick={this.onClicked}>Logout</li>
-          </ul>
-        </div>
+        {list}
       </div>
     );
-  }
-
 
 }
 
@@ -54,12 +45,62 @@ const mapStateToProps = (state) => {
     state
   };
 };
-
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
+  dashboard: () => dispatch(dashboard()),
 });
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 
-//export default Login;
+// import React, {Component} from 'react';
+// import style from './Login.module.scss';
+// import connect from 'react-redux/es/connect/connect';
+// import { Link } from 'react-router-dom';
+// import { logout , dashboard} from '../../../../../actions/actionCreator';
+// class Login extends Component {
+//   onClicked=()=>{
+//     this.props.logout();
+//   };
+//
+//   onClickedDashboard=()=>{
+//     this.props.dashboard();
+//   };
+//   render() {
+//     const list = this.props.state.manageElementsReducers.dashboardStatus && <div className={style.dashboard} >
+//       <ul className={style.dashboardList}>
+//         <li>View Dashboard</li>
+//         <li>My account</li>
+//         <li>Messages</li>
+//         <li><Link to="/admin_panel/" className={style.links}>Admin panel</Link></li>
+//         <li>Affiliate Dashboard</li>
+//         <li onClick={this.onClicked}>Logout</li>
+//       </ul>
+//     </div>;
+//     const content = (this.props.state.userReducers.user===null || this.props.state.userReducers.user===undefined) ?
+//       <Link to="/login">Login</Link> :
+//       <span className={style.toClick} onClick={this.onClickedDashboard}>
+//           <div className={style.ava}/>
+//         <span className={style.hi}>&nbsp; Hi,{this.props.state.userReducers.user.displayName} <i className="fa fa-angle-down"/></span>
+//         </span>
+//     ;
+//     return (
+//       <div className={style.flax}>
+//         <div className={style.main}>
+//           {content}
+//         </div>
+//         {list}
+//       </div>
+//     );
+//   }
+// }
+//
+// const mapStateToProps = (state) => {
+//   return {
+//     state
+//   };
+// };
+// const mapDispatchToProps = (dispatch) => ({
+//   logout: () => dispatch(logout()),
+//   dashboard: () => dispatch(dashboard()),
+// });
+// export default connect(mapStateToProps, mapDispatchToProps)(Login);
+//

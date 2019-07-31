@@ -1,8 +1,14 @@
 .main{
-  width:50%;
-  padding-right: 15px;
-  padding-left: 15px;
-  text-align: center;
+  //left:-3%;
+  width:38%;
+  position:absolute;
+  display: flex;
+  flex-direction:row;
+  justify-content: flex-end;
+  //padding-right: 15px;
+  //padding-left: 15px;
+  //margin-right:5%;
+  //text-align: right;
 }
 
 .mainContactDetails{

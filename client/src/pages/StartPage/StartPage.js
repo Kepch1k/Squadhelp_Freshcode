@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import style from './StartPage.module.scss';
 import Header from '../../components/Header/Header';
 import connect from 'react-redux/es/connect/connect';
-import { USER_KEY } from '../../constants/consts';
 import { userIsLogin } from '../../actions/actionCreator';
 
 
@@ -18,13 +17,6 @@ class StartPage extends Component {
     }
   }
 
-  /*componentWillMount() {
-   const user = localStorage.getItem( USER_KEY);
-   if (user){
-     this.props.userIsLogin(user);
-   }
-
-  }*/
 
   render() {
     return (

@@ -9,7 +9,7 @@ module.exports.check = async (req, res, next) => {
     req.id = decoded.idUser;
     next();
   } catch (e) {
-    next({ status: 400, message: 'Your session ended. Please re login.' });
+    next({ status: 401, message: 'Your session ended. Please re login.' });
   }
 };
 

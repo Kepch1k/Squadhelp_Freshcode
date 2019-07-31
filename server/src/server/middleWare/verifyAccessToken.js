@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 const { SECRETS_ACCESS } = require('../utils/Consts');
 
-module.exports.Check = async (req, res, next) => {
+module.exports.check = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
     const number = authHeader.indexOf(' ')+1;
@@ -10,7 +10,7 @@ module.exports.Check = async (req, res, next) => {
     req.id=decoded.idUser;
     next();
   } catch (e) {
-    next({status: 419, message: "Your session ended. Please re login."})
+    next({status: 403, message: "Your session ended. Please re login."})
   }
 };
 

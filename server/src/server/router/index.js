@@ -10,11 +10,11 @@ const verifyUser = require('../middleWare/verifyUser');
 const checkCountRefreshToken = require('../middleWare/checkCountRefreshToken');
 
 router.post('/user', userController.createUser);
-router.get('/user', verifyAccessToken.Check, userController.getUser);
-router.get('/getAllUsers',userController.getAllUsers);
+router.get('/user', verifyAccessToken.check, userController.getUser);
+router.get('/getAllUsers',verifyAccessToken.check, userController.getAllUsers);
 router.post('/refresh', verifyRefreshToken.check,refreshTokenFindAndCount.check, userController.refreshUser);
 router.post('/login', verifyUser.verify, checkCountRefreshToken.check, userController.loginUser);
-router.post('/banStatusUpdate/:id', userController.userBanStatusUpdate);
+router.post('/banStatusUpdate/:id',verifyAccessToken.check, userController.userBanStatusUpdate);
 router.delete('/logout', userController.logout);
 /*router.post('/ban/:id', (req, res, next) => {
   res.send('Hello world');

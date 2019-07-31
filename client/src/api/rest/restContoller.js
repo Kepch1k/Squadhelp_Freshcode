@@ -3,8 +3,8 @@ import axios from './../axiosConfig/axiosConfig';
 import { restURL } from '../baseURL';
 
 
-export const getGoods = () => axios.get(`${restURL}/goods`);
-export const getOneGoods = id => axios.get(`${restURL}/goods/id/${id}`);
+//export const getGoods = () => axios.get(`${restURL}/goods`);
+//export const getOneGoods = id => axios.get(`${restURL}/goods/id/${id}`);
 
 export const getUserLogin = data => axios.post(`${restURL}/login`, (data));
 //export const getUserLogin = data => console.log(data);

@@ -28,16 +28,12 @@ export default function (state = initialState, action) {
       };
     }
     case ACTION.GET_ALL_USERS_UPDATE: {
-      //console.log("its work ",action.data);
       return {
         ...state,
         data: state.data.map(user => user.id === action.data.id ?
-          // transform the one with a matching id
           { ...user, ...action.data } :
-          // otherwise return original
           user
         ),
-        //data: action.data,
         error: null,
       };
     }

@@ -24,10 +24,6 @@ const renderField = ({
 
 class Form extends Component {
 
-  constructor(props) {
-    super(props);
-  };
-
 
 
   render() {
@@ -75,14 +71,14 @@ class Form extends Component {
         </div>
 
         <div className={style.Row} style={{ marginTop: '30px' }}>
-          <button className={style.FieldSocial} type="submit"><span className="fa fa-facebook"/> Sign in with Facebook
+          <button className={style.FieldSocial} type="submit"><span className="fab fa-facebook-f" aria-hidden="true"/> Sign in with Facebook
           </button>
         </div>
 
         <div className={style.Row}>
           <button className={style.FieldSocial} style={{ background: '#dd4b39', borderColor: '#dd4b39' }}
                   type="submit">
-            <span className="fa fa-google"/> Sign in with Google
+            <span className="fab fa-google"/> Sign in with Google
           </button>
         </div>
       </form>

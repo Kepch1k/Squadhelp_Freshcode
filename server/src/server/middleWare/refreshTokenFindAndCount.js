@@ -5,7 +5,7 @@ module.exports.check = async (req, res, next) => {
     const token = req.body.refresh;
     const refreshToken = await RefreshToken.findOne({ where: { tokenString: token } });
     if (refreshToken==null){
-      next({ status: 403, message: 'Problem with session please re login' });
+      next({ status: 401, message: 'Problem with session please re login' });
     }
     const numberOfRefreshToken = await RefreshToken.count({ where: { userId: refreshToken.dataValues.userId } });
     if (numberOfRefreshToken >= 3) {

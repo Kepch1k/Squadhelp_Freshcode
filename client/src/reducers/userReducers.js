@@ -6,7 +6,8 @@ const initialState = {
   isFetching: false,
   error: null,
   loginFailed: false,
-  user:null
+  user: null,
+  updated: false,
 };
 
 export default function (state = initialState, action) {
@@ -17,6 +18,7 @@ export default function (state = initialState, action) {
         isFetching: true,
         error: null,
         loginFailed: false,
+        updated: false,
       };
     }
     case ACTION.LOGIN_SUCCESS: {
@@ -28,7 +30,7 @@ export default function (state = initialState, action) {
         loginFailed: false,
       };
     }
-    case ACTION.LOGIN_ERROR: {
+    case ACTION.USER_ERROR: {
       return {
         ...state,
         error: action.error,
@@ -37,19 +39,25 @@ export default function (state = initialState, action) {
       };
     }
     case ACTION.USER_LOGOUT: {
-      console.log("here too :",action.user);
       return {
         ...state,
-        user:action.userToRead,
+        user: action.userToRead,
         loginFailed: false,
       };
     }
     case ACTION.SET_USER: {
-      console.log("here too :",action.user);
       return {
         ...state,
-        user:action.user,
+        user: action.user,
         loginFailed: false,
+      };
+    }
+    case ACTION.GET_USER: {
+      return {
+        ...state,
+        user: action.user,
+        loginFailed: false,
+        updated: true,
       };
     }
     default: {

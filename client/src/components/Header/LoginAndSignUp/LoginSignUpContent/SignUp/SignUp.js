@@ -4,27 +4,21 @@ import { Link } from 'react-router-dom';
 import connect from 'react-redux/es/connect/connect';
 
 class SignUp extends Component {
-  constructor(props){
-    super(props);
-  }
   render() {
-
-    const content = (this.props.state.userReducers.user===null) ? <Link to="/signup"> Sign up</Link> :
+    const content = (this.props.state.userReducers.user===null || this.props.state.userReducers.user===undefined) ?
+      <Link className={style.anchor} to="/signup"> Sign up</Link> :
       <span >
-        <span className={style.hi}><i className="fa fa-envelope-o"/></span>
-
+        <span className={style.hi}><i className="far fa-envelope"/></span>
         </span>
     ;
     return (
       <div className={style.main}>
-        <div className={style.inside}>
+        <div>
           {content}
         </div>
       </div>
     );
   }
-
-
 }
 
 const mapStateToProps = (state) => {

@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import style from './Form.module.scss';
 import { Field, reduxForm } from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
-//import { userLogin } from '../../../../actions/actionCreator';
 
-import validate from '../../../../validations/asyncValidate2';/*
-import asyncValidate from '../../../../Validations/asyncValidate';
-*/
+import validate from '../../../../validations/asyncValidate2';
+
 
 const renderField = ({
                        input,
@@ -24,20 +22,14 @@ const renderField = ({
 
 class Form extends Component {
 
-  constructor(props) {
-    super(props);
-  };
-
 
 
   render() {
     const { handleSubmit, submitting } = this.props;
-    const login = this.props.state.userReducers.loginFailed ? 'block' : 'none';
-    //console.log(this.props.state.userReducers.data.user);
     return (
 
       <form onSubmit={handleSubmit(this.props.submit)}>
-        {/*}  <div className={style.loginFailed} style={{ display: login }}>Invalid Email or Password</div>*/}
+
         <div className={style.Row}>
           <Field className={style.Field}
                  name="firstName"
@@ -84,24 +76,24 @@ class Form extends Component {
           />
         </div>
          <div className={style.Row}>
-          <div className={style.ddss}>
+          <div className={style.insideRow}>
            <span className={style.miniElem}><Field name="customerStatus" component="input" type="radio" id={'check1'} value={"Buyer"}/> </span>
            <span>
-           <div className={style.ssdd}>
+           <div className={style.textBefore}>
              Join As a Buyer
-           </div><div className={style.ssdds}>
+           </div><div className={style.textAfter}>
              I am looking for a Name, Logo or Tagline for my business, brand or product.
            </div>
            </span>
         </div>
          </div>
         <div className={style.Row}>
-        <div className={style.ddss}>
+        <div className={style.insideRow}>
         <span className={style.miniElem}><Field name="customerStatus" component="input" type="radio" id={'check2'}value={"Creative"} /> </span>
 
-           <span><div className={style.ssdd}>
+           <span><div className={style.textBefore}>
              Join As a Creative
-           </div><div className={style.ssdds}>
+           </div><div className={style.textAfter}>
              I plan to submit name ideas, Logo designs or sell names in Domain Marketplace.
            </div> </span>
         </div>
@@ -113,7 +105,6 @@ class Form extends Component {
                  <Field name="RememberMe" component="input" type="checkbox" id={'check'}/>
                  </span>
                 <span className={style.checkbox}> Allow Squadhelp to send marketing/promotional offers from time to time</span>
-               {/*<span><label>Remember&nbsp;</label></span><span><label>me</label></span>*/}
              </div>
            </span>
 
@@ -126,18 +117,18 @@ class Form extends Component {
 <div className={style.Row}>
 <div className={style.unerCreate}>
 <p>
-By clicking this button, you agree to our <a className={style.terms} href="https://www.squadhelp.com/Terms&amp;Conditions" target="_blank">Terms of Service</a>.</p>
+By clicking this button, you agree to our <a className={style.terms} href="https://www.squadhelp.com/Terms&amp;Conditions" >Terms of Service</a>.</p>
 </div>
 </div>
         <div className={style.Row} style={{ marginTop: '10px' }}>
-          <button className={style.FieldSocial} type="submit"><span className="fa fa-facebook"/> Sign in with Facebook
+          <button className={style.FieldSocial} type="submit"><span className="fab fa-facebook-f"/> Sign in with Facebook
           </button>
         </div>
 
         <div className={style.Row} style={{ marginTop: '10px' }}>
           <button className={style.FieldSocial} style={{ background: '#dd4b39', borderColor: '#dd4b39' }}
                   type="submit">
-            <span className="fa fa-google"/> Sign in with Google
+            <span className="fab fa-google"/> Sign in with Google
           </button>
         </div>
       </form>
@@ -146,9 +137,8 @@ By clicking this button, you agree to our <a className={style.terms} href="https
 }
 
 Form = reduxForm({
-  form: 'login',
+  form: 'register',
   validate,
-  //asyncValidate,
   asyncChangeFields: ['email', 'password'],
 })(Form);
 
@@ -159,9 +149,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-/*const mapDispatchToProps = (dispatch) => ({
-  userLogin: (dataToSend) => dispatch(userLogin(dataToSend)),
-});*/
 
 export default connect(mapStateToProps)(Form);
 

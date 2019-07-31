@@ -40,25 +40,39 @@ a{color: #337ab7;
 }
 
 .flax{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: flex;
   flex-direction:column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .dashboard{
-  position: fixed;
+  width:160px;
+  position: absolute;
   top:40px;
   border: 1px solid #cacaca;
   font-size: 14px;
 }
 
-.dashboardList li{
+.dashboard a{
+  color :#718888;
+  text-decoration:none;
+}
+.dashboard a:hover{
+  color: black;
+  text-decoration:none;
+}
 
-  padding-left:8px;
-  padding-right:8px;
+.dashboardList li{
+  padding:5px 10px 5px 10px ;
   cursor: pointer;
 }
 .dashboardList li:hover {
-   background:rgba(210,212,211,0.7);
+  color:black;
+    background:#f5f5f5
  }

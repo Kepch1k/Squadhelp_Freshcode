@@ -6,7 +6,7 @@ class LoginAndSignUp extends Component {
 
   render() {
     return (
-      <div className={style.main}>
+      <div className={style.mainSignUpAndLogin}>
         <LoginSignUpContent/>
       </div>
     );

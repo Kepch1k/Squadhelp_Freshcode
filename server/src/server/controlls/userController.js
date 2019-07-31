@@ -59,7 +59,7 @@ module.exports.refreshUser = async (req, res, next) => {
     const tokenPair = { access: accessToken, refresh: createdRefreshToken.dataValues.tokenString };
     res.send({ tokenPair });
   } catch (e) {
-    next({ status: 400, message: 'Your session ended. Please re login.' });
+    next({ status: 401, message: 'Your session ended. Please re login.' });
   }
 };
 
@@ -96,7 +96,8 @@ module.exports.loginUser = async (req, res, next) => {
 
 module.exports.getUser = async (req, res, next) => {
   const id = req.id;
-  console.log('getUser');
+
+
   try {
     const result = await User.findOne({ where: { id } });
     const user = result.dataValues;
@@ -118,6 +119,7 @@ module.exports.getAllUsers = async (req, res, next) => {
     const result = await User.findAll({where:{role:"USER"},order: [
         ['id', 'ASC'],
       ]});
+
     res.send(result);
   } catch (e) {
     next({ status: 404, message: 'Users not found' });
@@ -126,20 +128,12 @@ module.exports.getAllUsers = async (req, res, next) => {
 
 module.exports.userBanStatusUpdate = async (req, res, next) => {
   try {
-    console.log(!req.body.banStatus,req.params.id);
+
     const result = await User.update(
     {isBaned: !req.body.banStatus},
     {returning: true,where: {id:req.params.id}}
   );
     const newResult = result[1][0].dataValues;
-    //console.log(newResult);
-    /*.then(function([ rowsUpdate, [updatedBook] ]) {
-
-    //console.log(updatedBook.dataValues,"----");
-
-      r
-
-  });*/
     res.send(newResult);
   }
   catch (e){
@@ -154,7 +148,6 @@ module.exports.logout = async (req, res, next) => {
        tokenString:req.body.data.token
       }
     });
-    console.log(numberOfField);
     res.send("OK");
   }
   catch (e){

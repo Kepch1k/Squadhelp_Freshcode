@@ -5,18 +5,10 @@ import { Link } from 'react-router-dom';
 import { getAllUsers } from '../../actions/actionCreator';
 import connect from 'react-redux/es/connect/connect';
 import { Redirect } from 'react-router';
-import { USER_KEY } from '../../constants/consts';
 
 class AdminP extends Component {
-  constructor(props){
-    super(props);
-  }
-
-
   render() {
-    const user = JSON.parse(localStorage.getItem( USER_KEY));
-    //console.log((user.role==="USER"),user,user.role);
-    if (this.props.state.userReducers.user===null || (this.props.state.userReducers.user.role==="USER"))return <Redirect to="/" />;
+    if (this.props.state.userReducers.user===null || (this.props.state.userReducers.user.role==="USER"))return <Redirect to="/notFound" />;
     return (
       <div className={style.body}>
         <List array={this.props.state.getAllUsersReducer.data}/>
@@ -24,12 +16,9 @@ class AdminP extends Component {
       </div>
     );
   }
-
   componentDidMount(){
       this.props.getAllUsers();
     }
-
-
 }
 
 const mapStateToProps = (state) => {

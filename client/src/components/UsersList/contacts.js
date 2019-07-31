@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Contact from './contact/contact';
 import style from './contacts.module.scss';
-import { getAllUsers, userBaned } from '../../actions/actionCreator';
+import { userBaned } from '../../actions/actionCreator';
 import connect from 'react-redux/es/connect/connect';
 
 class Contacts extends Component {
@@ -56,7 +56,6 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => ({
     userBaned: (id,status) => dispatch(userBaned(id,status)),
-    getAllUsers: () => dispatch(getAllUsers()),
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)( Contacts);
