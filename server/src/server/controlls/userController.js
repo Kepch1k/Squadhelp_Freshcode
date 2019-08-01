@@ -116,7 +116,7 @@ module.exports.getUser = async (req, res, next) => {
 
 module.exports.getAllUsers = async (req, res, next) => {
   try {
-    const result = await User.findAll({where:{role:"USER"},order: [
+    const result = await User.findAll({order: [
         ['id', 'ASC'],
       ]});
 

@@ -15,10 +15,15 @@ module.exports.verify = async (req, res, next) => {
 
       next({ status: 404, message: 'User not founds' });
     }
+
     req.user = user.dataValues;
 
     const match = await bcrypt.compare(password, user.dataValues.password);
     if (match) {
+      if(user.dataValues.isBaned)
+      {
+        next({ status: 403, message: 'User is baned' });
+      }
       next();
     } else {
 

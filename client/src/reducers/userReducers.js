@@ -8,6 +8,7 @@ const initialState = {
   loginFailed: false,
   user: null,
   updated: false,
+  banned:false
 };
 
 export default function (state = initialState, action) {
@@ -17,6 +18,7 @@ export default function (state = initialState, action) {
         ...state,
         isFetching: true,
         error: null,
+        banned:false,
         loginFailed: false,
         updated: false,
       };
@@ -26,13 +28,23 @@ export default function (state = initialState, action) {
         ...state,
         data: action.data,
         isFetching: false,
+        banned:false,
         error: null,
+        loginFailed: false,
+      };
+    }
+   case ACTION.LOGIN_BANNED: {
+      return {
+        ...state,
+        banned:true,
+        isFetching: false,
         loginFailed: false,
       };
     }
     case ACTION.USER_ERROR: {
       return {
         ...state,
+        banned:false,
         error: action.error,
         isFetching: false,
         loginFailed: true,
@@ -41,6 +53,7 @@ export default function (state = initialState, action) {
     case ACTION.USER_LOGOUT: {
       return {
         ...state,
+        banned:false,
         user: action.userToRead,
         loginFailed: false,
       };
@@ -48,6 +61,7 @@ export default function (state = initialState, action) {
     case ACTION.SET_USER: {
       return {
         ...state,
+        banned:false,
         user: action.user,
         loginFailed: false,
       };
@@ -55,6 +69,7 @@ export default function (state = initialState, action) {
     case ACTION.GET_USER: {
       return {
         ...state,
+        banned:false,
         user: action.user,
         loginFailed: false,
         updated: true,

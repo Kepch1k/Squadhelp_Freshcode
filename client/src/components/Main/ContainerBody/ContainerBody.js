@@ -22,6 +22,11 @@ class ContainerBody extends Component {
           email: 'Email is not valid format',
           _error: 'Login failed!',
         });
+      }else if (!values.password) {
+        throw new SubmissionError({
+          password: 'Required',
+          _error: 'Login failed!',
+        });
       }
       const dataToSend = {
         email: values.email,

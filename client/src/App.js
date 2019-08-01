@@ -54,7 +54,8 @@ import AdminPanel from './pages/AdminPanel/Adminpanel';
 import {Route , Switch} from "react-router-dom";
 import {Router} from "react-router-dom";
 import history from './boot/browserHistory';
-import { userIsLogin } from './actions/actionCreator';
+//import createTransitionManager from '../esm/history.js';
+//import { userIsLogin } from './actions/actionCreator';
 import connect from 'react-redux/es/connect/connect';
 import CheckUser from './components/Another/checkUser';
 import NotFound from './pages/NotFound/notFound';
@@ -83,10 +84,10 @@ const mapStateToProps = (state) => {
     state
   };
 };
-
+/*
 const mapDispatchToProps = (dispatch) => ({
   userIsLogin: (user) => dispatch(userIsLogin(user)),
-});
+});*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
 

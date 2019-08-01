@@ -2,35 +2,41 @@ import React, {Component} from 'react';
 import style from './Adminpanel.module.scss';
 import List from '../../components/UsersList/contacts';
 import { Link } from 'react-router-dom';
-import { getAllUsers } from '../../actions/actionCreator';
+import { getAllUsers, userIsLogin } from '../../actions/actionCreator';
 import connect from 'react-redux/es/connect/connect';
 import { Redirect } from 'react-router';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class AdminP extends Component {
+
+  componentWillMount(){
+    this.props.getAllUsers();
+  }
   render() {
-    if (this.props.state.userReducers.user===null || (this.props.state.userReducers.user.role==="USER"))return <Redirect to="/notFound" />;
+    const ARRAY = (this.props.users===null)?{}:<List array={this.props.users}/>;
+
     return (
       <div className={style.body}>
-        <List array={this.props.state.getAllUsersReducer.data}/>
+        {ARRAY}
+          <ToastContainer />
         <Link to="/"><div className={style.main}>Home</div></Link>
       </div>
     );
   }
-  componentDidMount(){
-      this.props.getAllUsers();
+    componentDidMount() {
+      if (this.props.user===null || (this.props.user.role==="USER"))return <Redirect to="/notFound" />;
     }
 }
-
 const mapStateToProps = (state) => {
   return {
     state,
+    user:state.userReducers.user,
     users:state.getAllUsersReducer.data
   };
 };
-
 const mapDispatchToProps = (dispatch) => ({
   getAllUsers: () => dispatch(getAllUsers()),
+  userIsLogin: () => dispatch(userIsLogin()),
 });
-
-
 export default connect(mapStateToProps,mapDispatchToProps)(AdminP);

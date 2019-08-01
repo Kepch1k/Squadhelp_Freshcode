@@ -2,10 +2,10 @@ import React from 'react';
 import style from './contact.module.scss';
 
 function Contact (props){
-    const Color = props.isbanned ? "green" : "red";
-    const status = props.isbanned ?  <i className="fas fa-check-circle"/> : <i className="fa fa-ban" aria-hidden="true"/>;
+    const Color = props.isBanned ? "red" : "green";
+    const status = props.isBanned ? <i className="fa fa-ban" aria-hidden="true"/>  : <i className="fas fa-check-circle"/>;
     return (
-        <div onClick={() => props.click(props.id,props.isbanned)} className={style.list}>
+        <div onClick={() => props.click(props.id,props.isBanned)} className={style.list}>
           <div className={style.listLeft}>
             <div className={style.avatar} style={{backgroundImage: "url(" + props.img + ")"}}/>
             <div className={style.boxForNameAndLvl}>
@@ -16,7 +16,7 @@ function Contact (props){
                 {props.displayName}
               </div>
               <div className={style.position}>
-                {props.position}
+                position: {props.position}
               </div>
             </div>
             </div>

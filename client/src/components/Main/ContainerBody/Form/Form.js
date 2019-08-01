@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import style from './Form.module.scss';
 import { Field, reduxForm } from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
-//import { userLogin } from '../../../../actions/actionCreator';
-/*
-import validate from '../../../../Validations/Validate';*/
-//import asyncValidate from '../../../../validations/asyncValidate2';
-
 
 const renderField = ({
                        input,
@@ -24,16 +19,15 @@ const renderField = ({
 
 class Form extends Component {
 
-
-
   render() {
     const { handleSubmit, submitting } = this.props;
+    const baned = this.props.state.userReducers.banned ? 'block' : 'none';
     const login = this.props.state.userReducers.loginFailed ? 'block' : 'none';
-    //console.log(this.props.state.userReducers.data.user);
     return (
 
       <form onSubmit={handleSubmit(this.props.submit)}>
         <div className={style.loginFailed} style={{ display: login }}>Invalid Email or Password</div>
+        <div className={style.loginFailed} style={{ display: baned }}>You are banned</div>
         <div className={style.Row}>
           <Field className={style.Field}
                  name="email"
@@ -88,9 +82,6 @@ class Form extends Component {
 
 Form = reduxForm({
   form: 'login',
-  //validate,
-  //asyncValidate,
-  asyncChangeFields: ['email', 'password'],
 })(Form);
 
 const mapStateToProps = (state) => {
@@ -99,10 +90,6 @@ const mapStateToProps = (state) => {
     fromStore: state.userReducers.data,
   };
 };
-
-/*const mapDispatchToProps = (dispatch) => ({
-  userLogin: (dataToSend) => dispatch(userLogin(dataToSend)),
-});*/
 
 export default connect(mapStateToProps)(Form);
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import style from './StartPage.module.scss';
 import Header from '../../components/Header/Header';
+import HeaderBottom from '../../components/HeaderBottom/HeaderBottom';
 import connect from 'react-redux/es/connect/connect';
 import { userIsLogin } from '../../actions/actionCreator';
 
@@ -22,6 +23,7 @@ class StartPage extends Component {
     return (
       <div className={style.body}>
         <Header/>
+        <HeaderBottom/>
       </div>
     );
   }

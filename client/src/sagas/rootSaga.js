@@ -7,8 +7,8 @@ import { changeBanStatusSaga } from './changeBanStatusSaga';
 import { logoutSaga } from './logoutSaga';
 import { dashboardChange } from './manageToElements';
 
-
 function* rootSaga() {
+  //yield takeLatest(ACTION.LOGIN_BANNED, ()=>console.log("AGA"));
   yield takeLatest(ACTION.GET_ALL_USERS, getAllUsersSaga);
   yield takeLatest(ACTION.USER_SIGN_UP, signUpSaga);
   yield takeLatest(ACTION.USER_LOGIN, getLoginSaga);

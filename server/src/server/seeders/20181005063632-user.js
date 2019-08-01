@@ -12,8 +12,8 @@ module.exports = {
       firstName: 'ORDO',
       lastName: 'ORDO',
       displayName: 'Tra-ta-ta',
-      customerStatus: 'ORDO',
-      role: 'ADMIN',
+      customerStatus: 'Buyer',
+      role: 'USER',
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
