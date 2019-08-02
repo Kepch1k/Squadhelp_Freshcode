@@ -39,18 +39,15 @@ axios.interceptors.response.use(
           localStorage.setItem( TOKENS_KEY, TOKENS_JSON);
           //axios.defaults.headers.common['Authorization'] = "Bearer " + (JSON.parse(localStorage.getItem(TOKENS_KEY))).access;
           error.config.headers['Authorization'] = "Bearer " + (JSON.parse(localStorage.getItem(TOKENS_KEY))).access;
-          break;
+          return axios.request(error.config);
         default:break
       }
     } catch (err) {
     }
 
     //console.log("axios",error.config);
-    if (localStorage.getItem(TOKENS_KEY)){
-      return axios.request(error.config);
-    }else{
       //console.log(error.response);
-    return error;}
+    return error;
   });
 
 export default axios;

@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Login.module.scss';
 import connect from 'react-redux/es/connect/connect';
 import { Link } from 'react-router-dom';
-import { logout , dashboard} from '../../../../../actions/actionCreator';
+import { logout , dashboard} from '../../../../../../actions/actionCreator';
 function Login(props){
 function onClicked(){
   props.logout();

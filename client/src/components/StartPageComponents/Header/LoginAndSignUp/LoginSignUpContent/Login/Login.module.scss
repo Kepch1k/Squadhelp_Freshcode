@@ -52,15 +52,20 @@ a{color: #337ab7;
 }
 
 .dashboard{
-  width:160px;
+  font-weight: 500;
+  text-align: left;
+  background: white;
+  z-index: 1;
+  width:170px;
   position: absolute;
   top:40px;
   border: 1px solid #cacaca;
-  font-size: 14px;
+  font-size: 16px;
+  color: #333;
 }
 
 .dashboard a{
-  color :#718888;
+  color: #333;
   text-decoration:none;
 }
 .dashboard a:hover{

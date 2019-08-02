@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import style from './HeaderBottom.module.scss';
-
-import Phone from './Phone/Phone';
-import LoginAndSignUp from './LoginAndSignUp/LoginAndSignUp';
+import BottomHeaderList from './StartPageBottomHeaderList/StartPageBottomHeaderList';
+import {NameIdeals, Contests, OurWork, NamesForSale, Blog} from '../../../constants/StartPageBottomHeaderLists';
 import { Link } from 'react-router-dom';
 
 class HeaderBottom extends Component {
@@ -20,39 +19,47 @@ class HeaderBottom extends Component {
               <li className={style.mainHeaderBottomFlexLists}>
                 <div className={style.SublistTitle}>  Name Ideas <i className="fa fa-angle-down"/></div>
                 <ul className={style.mainHeaderBottomSubLists}>
-                  <li>1sssss</li>
-                  <li>1sssss</li>
+                  <BottomHeaderList key={"Name"} list={NameIdeals}/>
                 </ul>
               </li>
 
 
               <li className={style.mainHeaderBottomFlexLists}>
                 <div className={style.SublistTitle}>  Contests <i className="fa fa-angle-down"/></div>
-                <ul className={style.mainHeaderBottomSubLists}><li> 1</li></ul>
+                <ul className={style.mainHeaderBottomSubLists}>
+                  <BottomHeaderList key={"Contests"} list={Contests}/>
+                  </ul>
               </li>
 
 
               <li className={style.mainHeaderBottomFlexLists}>
                 <div className={style.SublistTitle}> Our Work <i className="fa fa-angle-down"/></div>
-                <ul className={style.mainHeaderBottomSubLists}><li> 1</li></ul>
+                <ul className={style.mainHeaderBottomSubLists}>
+                  <BottomHeaderList key={"Work"} list={OurWork}/>
+                </ul>
               </li>
 
 
               <li className={style.mainHeaderBottomFlexLists}>
                 <div className={style.SublistTitle}>  Names For Sale <i className="fa fa-angle-down"/></div>
-                <ul className={style.mainHeaderBottomSubLists}><li> 1</li></ul>
+                <ul className={style.mainHeaderBottomSubLists}>
+                  <BottomHeaderList key={"Names"} list={NamesForSale}/>
+                </ul>
               </li>
 
 
-              <li className={style.mainHeaderBottomFlexLists}>
+              <li className={style.mainHeaderBottomFlexListsBlog}>
                 <div className={style.SublistTitle}>   Blog <i className="fa fa-angle-down"/></div>
-                <ul className={style.mainHeaderBottomSubLists}><li> 1</li></ul>
+                <ul className={style.mainHeaderBottomSubListsBlog}>
+                  <BottomHeaderList key={"Blog"} list={Blog}/>
+                </ul>
               </li>
 
             </ul>
-            <div className={style.mainHeaderBottomButton}>
+            <Link to="/ss"><div className={style.mainHeaderBottomButton}>
               START CONTEST
-            </div>
+            </div></Link>
+
           </div>
         </div>
       </div>
