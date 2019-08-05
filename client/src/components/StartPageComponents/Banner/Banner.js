@@ -31,7 +31,7 @@ function Banner (){
           Or, explore our hand-picked collection of premium names available for immediate purchase.</p>
         <div className={style.flexList}>
           <div >
-            <Link to="/ss"><div className={style.startContestButton}>
+            <Link to="/contest_creating/"><div className={style.startContestButton}>
               START A CONTEST
             </div></Link>
           </div>

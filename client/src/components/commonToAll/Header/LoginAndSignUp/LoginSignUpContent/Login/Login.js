@@ -26,7 +26,7 @@ function onClickedDashboard(){
       <Link to="/login">Login</Link> :
       <span className={style.toClick} onClick={onClickedDashboard}>
           <div className={style.ava}/>
-        <span className={style.hi}>&nbsp; Hi,{props.state.userReducers.user.displayName} <i className="fa fa-angle-down"/></span>
+        <span className={style.hi}>&nbsp; Hi, {props.state.userReducers.user.displayName} <i className="fa fa-angle-down"/></span>
         </span>
     ;
     return (

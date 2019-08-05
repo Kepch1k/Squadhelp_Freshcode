@@ -37,6 +37,7 @@ class ContainerBody extends Component {
   };
 
   render() {
+    //console.log('eroorr',this.props.error);
     return (
       <div className={style.main}>
         <div className={style.title}><h2>LOGIN TO YOUR ACCOUNT </h2></div>
@@ -52,6 +53,7 @@ const mapStateToProps = (state) => {
   return {
     state,
     fromStore: state.userReducers.data,
+    error: state.userReducers.error,
   };
 };
 const mapDispatchToProps = (dispatch) => ({

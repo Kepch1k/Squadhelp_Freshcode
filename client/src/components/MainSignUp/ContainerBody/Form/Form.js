@@ -89,7 +89,7 @@ class Form extends Component {
          </div>
         <div className={style.Row}>
         <div className={style.insideRow}>
-        <span className={style.miniElem}><Field name="customerStatus" component="input" type="radio" id={'check2'}value={"Creative"} /> </span>
+        <span className={style.miniElem}><Field name="customerStatus" component="input" type="radio" id={'check2'} value={"Creative"} /> </span>
 
            <span><div className={style.textBefore}>
              Join As a Creative

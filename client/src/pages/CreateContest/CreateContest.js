@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import style from './StartPage.module.scss';
+import style from './CreateContest.module.scss';
 import Header from '../../components/commonToAll/Header/Header';
 import HeaderBottom from '../../components/commonToAll/HeaderBottom/HeaderBottom';
-import Banner from '../../components/StartPageComponents/Banner/Banner';
-import Carousel from '../../components/StartPageComponents/Carousel/carousel';
+import HeaderCreateContest from '../../components/CreatContestComponents/Header/Header';
+import ContestCategories from '../../components/CreatContestComponents/contestCategories/contestCategories';
+import PackagesAndOther from '../../components/CreatContestComponents/PackagesAndOther/PackagesAndOther';
 import connect from 'react-redux/es/connect/connect';
 import { userIsLogin } from '../../actions/actionCreator';
 
@@ -26,8 +27,9 @@ class StartPage extends Component {
       <div className={style.body}>
         <Header/>
         <HeaderBottom/>
-        <Banner/>
-        <Carousel/>
+        <HeaderCreateContest/>
+        <ContestCategories/>
+        <PackagesAndOther/>
       </div>
     );
   }
